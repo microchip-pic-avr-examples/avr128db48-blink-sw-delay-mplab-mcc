@@ -1,41 +1,102 @@
 <!-- Please do not change this logo with link -->
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 
-# Update the title for avr128db48-blink-sw-delay-mplab-mcc here
+# LED Blink using software delay
 
-<!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
+This example shows how to configure an LED to blink periodically using drivers in MPLAB Code Configurator (MCC). The example uses the Pin Manager to configure the pin and generate an API with which the pin is later interfaced. Also, the delay driver is used to implement periodic timeouts between each time the pin output is toggled.
+
+<!-- ![cnano](images/avr128db48_cnano_board.png) -->
+<p>
+    <img width=700px height=auto src="images/avr128db48_cnano_board.png">
+</p>
+
+
 
 ## Related Documentation
 
-<!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
-     In addition a link to the device family landing page and relevant peripheral pages as well:
-     - [AN3381 - Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback](https://microchip.com/00003381/)
-     - [PIC18F-Q10 Family Product Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family) -->
+- [AVR128DB48 device page](https://www.microchip.com/wwwproducts/en/AVR128DB48)
+- [MPLAB Code Configurator](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-code-configurator)
+
 
 ## Software Used
 
-<!-- All software used in this example must be listed here. Use unbreakable links!
-     - MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-     - MPLAB® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-     - MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - Microchip PIC18F-Q Series Device Support (1.4.109) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/) -->
+- [MPLAB® X IDE v5.45](https://www.microchip.com/mplab/mplab-x-ide) or newer
+- [MPLAB® Xpress IDE](https://www.microchip.com/xpress) (alternative to MPLAB X IDE)
+- [XC8 Compiler v2.32](https://www.microchip.com/mplab/compilers) or newer
+- [MPLAB® Code Configurator (MCC) v4.1.0](https://www.microchip.com/mplab/mplab-code-configurator) or newer
+- [MPLAB® Melody Library 1.37.26 or newer](https://www.microchip.com/mplab/mplab-code-configurator) or newer
+- [MCC Device Libraries 8-bit AVR MCUs 2.7.0](https://www.microchip.com/mplab/mplab-code-configurator) or newer
+- [Microchip AVR128DB48 Device Support Pack AVR-Dx_DFP 1.7.98](https://packs.download.microchip.com/) or newer
 
 ## Hardware Used
 
-<!-- All hardware used in this example must be listed here. Use unbreakable links!
-     - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
-     - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-     - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
+- [AVR128DB48 Curiosity Nano](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV35L43A)
+
 
 ## Setup
+MCC with the Melody library was used to implement this example as shown in the following sections.
 
-<!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+### Delay Driver
+The Delay Driver was simply added to the project by locating it in the Device Resources pane on the left side in MCC and clicking the green plus icon as shown in the image below.
+
+*Device Resources*
+
+![MCC - Adding Delay Driver](images/MCC_add_delay_driver.png)
+
+
+When the Delay Driver was added, it was shown in the Project Resources and in the Builder view as seen below.
+
+*Project Resources*
+
+![MCC - Project Resources with Delay](images/MCC_project_resources_dly_added.png)
+
+*Builder*
+
+![MCC - Builder with Delay](images/MCC_builder_dly_added.png)
+
+
+### Pin Configuration
+The Pin controlling the onboard LED on the Curiosity Nano board was configured using the Pins Grid View. The Pins Grid View is accessed by clicking on the Pins line in Project Resources.
+
+*Project Resources*
+
+![MCC - Open Pin Manager](images/MCC_project_resources_pins.png)
+
+Then the pin connected to the LED, PB3, was selected as an output by clicking the corresponding padlock symbol.
+
+*Pins Grid View*
+
+![MCC - Set Pin to Output](images/MCC_pins_grid_view.png)
+
+The pin was also configured with a custom name to make the generated API more readable.
+
+*Custom Pin Name*
+
+![MCC - Custom Pin Name](images/MCC_pins_custom_name.png)
+
+
+### Code Implementation
+First, the delay functions were included in the application by including the MCC generated API:
+```c
+#include "mcc_generated_files/timer/delay.h"
+```
+
+Then the pin manager and delay APIs were used to toggle the LED-pin once every 500 ms:
+```c
+while(1)
+    {
+        LED_PIN_Toggle();
+        DELAY_milliseconds(500);
+    }    
+```
+
 
 ## Operation
+After having flashed the application to the AVR128DB48 Curiosity Nano, the onboard LED blinks with a frequency of 1 Hz.
 
-<!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+![blinky_gif](images/avr128DB48_cnano_blink.gif)
+
 
 ## Summary
 
-<!-- Summarize what the example has shown -->
+The example has shown how MCC can be used to create APIs which may easily be used in application code. The use of such APIs make the code readable and simple, while the functions are generated automatically as configured in MCC.
