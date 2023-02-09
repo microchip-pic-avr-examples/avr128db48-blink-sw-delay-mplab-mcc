@@ -2,29 +2,29 @@
     "metaDataVersion": "1.0.0",
     "category": "com.microchip.ide.project",
     "content": {
-        "metaDataVersion": "1.1.0",
+        "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.avr128db48-blink-sw-delay-mplab-mcc",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "displayName": "LED Blink using software delay",
         "projectName": "avr128db48-blink-sw-delay-mplab-mcc",
         "shortDescription": "This example uses the MCC Melody Library to show how to configure the device with a software delay and blink the LED on the AVR128DB48 Curiosity Nano development kit",
         "ide": {
             "name": "MPLAB X",
-            "semverRange": ">=5.45.0"
+            "semverRange": ">=6.0.0"
         },
         "compiler": [
             {
                 "name": "XC8",
-                "semverRange": "^2.32.0"
+                "semverRange": "^2.40.0"
             }
         ],
         "dfp": {
             "name": "AVR-Dx_DFP",
-            "semverRange": "^1.7.98"
+            "semverRange": "^2.3.272"
         },
         "configurator": {
             "name": "MCC",
-            "semverRange": ">=4.1.0"
+            "semverRange": ">=5.1.17"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -37,17 +37,11 @@
             }
         },
         "author": "Amund Aune",
-        "subcategories": [
-            [
-                "Peripherals", "PORT"
-            ]
-        ],
         "peripherals": [
-            "PORT"
+            "GPIO"
         ],
         "keywords": [
-            "PORT",
-            "Delay",
+            "GPIO",
             "LED",
             "Curiosity Nano",
             "Melody"

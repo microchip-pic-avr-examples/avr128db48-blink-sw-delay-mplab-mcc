@@ -15,18 +15,18 @@ This example shows how to configure an LED to blink periodically using drivers i
 ## Related Documentation
 
 - [AVR128DB48 device page](https://www.microchip.com/wwwproducts/en/AVR128DB48)
-- [MPLAB Code Configurator](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-code-configurator)
+- [MPLAB® Code Configurator](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-code-configurator)
 
 
 ## Software Used
 
-- [MPLAB® X IDE v5.45](https://www.microchip.com/mplab/mplab-x-ide) or newer
+- [MPLAB® X IDE v6.0](https://www.microchip.com/mplab/mplab-x-ide) or newer
 - [MPLAB® Xpress IDE](https://www.microchip.com/xpress) (alternative to MPLAB X IDE)
-- [XC8 Compiler v2.32](https://www.microchip.com/mplab/compilers) or newer
-- [MPLAB® Code Configurator (MCC) v4.1.0](https://www.microchip.com/mplab/mplab-code-configurator) or newer
+- [XC8 Compiler v2.40](https://www.microchip.com/mplab/compilers) or newer
+- [MPLAB® Code Configurator (MCC) v5.1.17](https://www.microchip.com/mplab/mplab-code-configurator) or newer
 - [MPLAB® Melody Library 1.37.26 or newer](https://www.microchip.com/mplab/mplab-code-configurator) or newer
 - [MCC Device Libraries 8-bit AVR MCUs 2.7.0](https://www.microchip.com/mplab/mplab-code-configurator) or newer
-- [Microchip AVR128DB48 Device Support Pack AVR-Dx_DFP 1.7.98](https://packs.download.microchip.com/) or newer
+- [Microchip AVR128DB48 Device Support Pack AVR-Dx_DFP 2.3.272](https://packs.download.microchip.com/) or newer
 
 ## Hardware Used
 
@@ -34,7 +34,7 @@ This example shows how to configure an LED to blink periodically using drivers i
 
 
 ## Setup
-MCC with the Melody library was used to implement this example as shown in the following sections.
+This example uses MCC with the Melody library, as shown below.
 
 ### Delay Driver
 The Delay Driver was simply added to the project by locating it in the Device Resources pane on the left side in MCC and clicking the green plus icon as shown in the image below.

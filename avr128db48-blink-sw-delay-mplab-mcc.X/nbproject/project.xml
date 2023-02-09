@@ -4,7 +4,7 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>avr128db48-blink-sw-delay-mplab-mcc</name>
-            <creation-uuid>88ba5361-9f34-4c86-9d6e-e42ae6922591</creation-uuid>
+            <creation-uuid>2c104aac-2710-47ac-b8cd-be616ad0f805</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
